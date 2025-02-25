@@ -2,7 +2,8 @@ require("dotenv").config();
 
 const express = require("express");
 const cors = require("cors");
-const usersRoutes = require("./src/routes/usersRoutes");
+const userRoutes = require("./src/routes/userRoutes");
+const postRoutes = require("./src/routes/postRoutes");
 
 const app = express();
 const PORT = process.env.PORT || 4000;
@@ -10,7 +11,8 @@ const PORT = process.env.PORT || 4000;
 app.use(cors()); 
 app.use(express.json()); 
 
-app.use("/api", usersRoutes);
+app.use("/api", userRoutes);
+app.use("/api", postRoutes);
 
 app.get("/", (req, res) => {
     res.send("ROTA TA FUNCIONANDO!!");
