@@ -3,8 +3,8 @@ const PostList = require("../models/PostList");
 const lista = new PostList();
 
 
-lista.addPost(new Post("", 1000, 400, "Foto do meu dog", "https://www.dog.com"));
-lista.addPost(new Post("", 300, 20, "lolzinho", "https://www.lol.com"));
+lista.addPost(new Post("", 400, 500, "Foto do luizao", "https://www.luizao.com"));
+lista.addPost(new Post("", 200, 210, "foto do cadu", "https://www.cadu.com"));
 
 const router = {
   getAllPosts: (req, res) => {
@@ -15,14 +15,14 @@ const router = {
     try {
       res.json(lista.getPostById(req.params.id));
     } catch (error) {
-      res.status(404).json({ message: "Esse post não existe em nosa rede", error });
+      res.status(404).json({ message: "Esse post não existe em nossa rede", error });
     }
   },
 
   addPost: (req, res) => {
     try {
       const { idUser, like, comment, description, image } = req.body;
-      if (!idUser, !like, !comment, !description, !image) {
+      if (!idUser || !like || !comment || !description || !image) {
         throw new Error("É necessário preencher todos os campos para criar um post");
       }
       const newPost = new Post(idUser, like, comment, description, image);
